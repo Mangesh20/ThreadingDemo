@@ -11,6 +11,7 @@
 #define kColorRed [UIColor colorWithRed:254/255.0 green:129/255.0 blue:70/255.0 alpha:1]
 @interface ViewController (){
     dispatch_queue_t backgroundQueue;
+    NSInteger count;
 }
 
 @end
@@ -29,14 +30,22 @@
 
 - (IBAction)btnSerialTaskButtonTapped:(id)sender {
     backgroundQueue = dispatch_queue_create("Global", nil);
+    count = 1;
         [self allTasks];
     
     
 }
 
 - (IBAction)btnConcurrentTaskTapped:(id)sender {
-    backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    backgroundQueue = dispatch_queue_create("Global", nil);
+
+//    backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    count =1;
+    dispatch_async(backgroundQueue, ^{
+        
         [self allTasksParallel];
+
+    });
     
 }
 
@@ -57,7 +66,8 @@
     dispatch_async(backgroundQueue, ^{
         if ([self timeConsumingTask]) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                self.lblCount1.text = @"1";
+            
+                self.lblCount1.text = [NSString stringWithFormat:@"%ld",(long)count++];
                 [self.lblCount1 setBackgroundColor:kColorGreen];
                 
             });
@@ -66,7 +76,7 @@
     dispatch_async(backgroundQueue, ^{
         if ([self timeConsumingTask]) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                self.lblCount2.text = @"1";
+                self.lblCount2.text = [NSString stringWithFormat:@"%ld",(long)count++];
                 [self.lblCount2 setBackgroundColor:kColorGreen];
             });
         }
@@ -74,7 +84,7 @@
     dispatch_async(backgroundQueue, ^{
         if ([self timeConsumingTask]) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                self.lblCount3.text = @"1";
+                self.lblCount3.text= [NSString stringWithFormat:@"%ld",(long)count++];
                 [self.lblCount3 setBackgroundColor:kColorGreen];
                 
             });
@@ -83,7 +93,7 @@
     dispatch_async(backgroundQueue, ^{
         if ([self timeConsumingTask]) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                self.lblCount4.text = @"1";
+                self.lblCount4.text = [NSString stringWithFormat:@"%ld",(long)count++];
                 [self.lblCount4 setBackgroundColor:kColorGreen];
                 
             });
@@ -92,7 +102,7 @@
     dispatch_async(backgroundQueue, ^{
         if ([self timeConsumingTask]) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                self.lblCount5.text = @"1";
+                self.lblCount5.text = [NSString stringWithFormat:@"%ld",(long)count++];
                 [self.lblCount5 setBackgroundColor:kColorGreen];
                 
             });
@@ -103,51 +113,67 @@
 }
 
 - (void)allTasksParallel{
-    
+
+    ///1
+//    backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
     dispatch_async(backgroundQueue, ^{
         if ([self timeConsumingTaskParallel]) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                self.lblCount1.text = @"1";
+                self.lblCount1.text = [NSString stringWithFormat:@"%ld",(long)count++];
                 [self.lblCount1 setBackgroundColor:kColorGreen];
                 
             });
         }
     });
+
+    ///2
+//    backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     dispatch_async(backgroundQueue, ^{
         if ([self timeConsumingTaskParallel]) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                self.lblCount2.text = @"1";
+                self.lblCount2.text = [NSString stringWithFormat:@"%ld",(long)count++];
                 [self.lblCount2 setBackgroundColor:kColorGreen];
             });
         }
     });
+    
+    ///3
+//    backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(backgroundQueue, ^{
         if ([self timeConsumingTaskParallel]) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                self.lblCount3.text = @"1";
+                self.lblCount3.text = [NSString stringWithFormat:@"%ld",(long)count++];
                 [self.lblCount3 setBackgroundColor:kColorGreen];
                 
             });
         }
     });
+    ////4
+    backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_async(backgroundQueue, ^{
         if ([self timeConsumingTaskParallel]) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                self.lblCount4.text = @"1";
+                self.lblCount4.text = [NSString stringWithFormat:@"%ld",(long)count++];
                 [self.lblCount4 setBackgroundColor:kColorGreen];
                 
             });
         }
     });
+    
+    ///5
+    backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_async(backgroundQueue, ^{
         if ([self timeConsumingTaskParallel]) {
             dispatch_sync(dispatch_get_main_queue(), ^{
-                self.lblCount5.text = @"1";
+                self.lblCount5.text = [NSString stringWithFormat:@"%ld",(long)count++];
                 [self.lblCount5 setBackgroundColor:kColorGreen];
                 
             });
         }
     });
+    
+    
+
 
 
  
@@ -157,7 +183,7 @@
     
     
 }
-static NSInteger constant =19999;
+static NSInteger constant =9999;
 
 - (BOOL)timeConsumingTask{
     BOOL sucess =YES;
@@ -176,9 +202,10 @@ static NSInteger constant =19999;
     
     ////////Time Consuming Task/////////////
     dispatch_apply(constant, backgroundQueue, ^(size_t idx) {
-                NSLog(@"%ld",(long)idx);
+        
+        NSLog(@"%ld",(long)idx);
     
-            });
+    });
     
     
     return sucess;
