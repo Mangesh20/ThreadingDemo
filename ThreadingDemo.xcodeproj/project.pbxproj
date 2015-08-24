@@ -10,11 +10,11 @@
 		84E1042D1A88F04C00A93046 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E1042C1A88F04C00A93046 /* main.m */; };
 		84E104301A88F04C00A93046 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E1042F1A88F04C00A93046 /* AppDelegate.m */; };
 		84E104331A88F04C00A93046 /* ThreadingDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84E104311A88F04C00A93046 /* ThreadingDemo.xcdatamodeld */; };
-		84E104361A88F04C00A93046 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E104351A88F04C00A93046 /* ViewController.m */; };
 		84E104391A88F04C00A93046 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E104371A88F04C00A93046 /* Main.storyboard */; };
 		84E1043B1A88F04C00A93046 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E1043A1A88F04C00A93046 /* Images.xcassets */; };
 		84E1043E1A88F04C00A93046 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E1043C1A88F04C00A93046 /* LaunchScreen.xib */; };
 		84E1044A1A88F04C00A93046 /* ThreadingDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E104491A88F04C00A93046 /* ThreadingDemoTests.m */; };
+		CA582D721B8B3C7800E77CA4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA582D711B8B3C7800E77CA4 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,13 +35,13 @@
 		84E1042F1A88F04C00A93046 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		84E104321A88F04C00A93046 /* ThreadingDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ThreadingDemo.xcdatamodel; sourceTree = "<group>"; };
 		84E104341A88F04C00A93046 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		84E104351A88F04C00A93046 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		84E104381A88F04C00A93046 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84E1043A1A88F04C00A93046 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84E1043D1A88F04C00A93046 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		84E104431A88F04C00A93046 /* ThreadingDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThreadingDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E104481A88F04C00A93046 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84E104491A88F04C00A93046 /* ThreadingDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThreadingDemoTests.m; sourceTree = "<group>"; };
+		CA582D711B8B3C7800E77CA4 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +86,7 @@
 				84E1042E1A88F04C00A93046 /* AppDelegate.h */,
 				84E1042F1A88F04C00A93046 /* AppDelegate.m */,
 				84E104341A88F04C00A93046 /* ViewController.h */,
-				84E104351A88F04C00A93046 /* ViewController.m */,
+				CA582D711B8B3C7800E77CA4 /* ViewController.m */,
 				84E104371A88F04C00A93046 /* Main.storyboard */,
 				84E1043A1A88F04C00A93046 /* Images.xcassets */,
 				84E1043C1A88F04C00A93046 /* LaunchScreen.xib */,
@@ -224,7 +224,7 @@
 			files = (
 				84E104331A88F04C00A93046 /* ThreadingDemo.xcdatamodeld in Sources */,
 				84E104301A88F04C00A93046 /* AppDelegate.m in Sources */,
-				84E104361A88F04C00A93046 /* ViewController.m in Sources */,
+				CA582D721B8B3C7800E77CA4 /* ViewController.m in Sources */,
 				84E1042D1A88F04C00A93046 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +418,7 @@
 				84E1044F1A88F04C00A93046 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84E104501A88F04C00A93046 /* Build configuration list for PBXNativeTarget "ThreadingDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +427,7 @@
 				84E104521A88F04C00A93046 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
